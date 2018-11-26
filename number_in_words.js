@@ -15,29 +15,38 @@ function numberToWords(num) {
       temp = kamusAngkaStr[i] + ' ';
     }
 
-    if (numStr.length > 4 && numStr.length !== 7) {
-      var moreThanThousand = numStr.slice(0, -3);
-      // console.log(numStr, '------');
+    if (numStr.length > 4 && numStr.length < 7) {
+      var pecahan = numStr.slice(0, -3);
+    } else if (numStr.length >= 7 && numStr.length < 10) {
+      pecahan = numStr.slice(0, -6);
     } else {
-      moreThanThousand = numStr;
+      pecahan = numStr;
     }
 
-    if (numStr.length == 4 && numStr[0] == kamusAngka[i]) {
+    if (pecahan.length == 4 && numStr[0] == kamusAngka[i]) {
       return temp + 'ribu ' + numberToWords(numStr.substring(1));
-    } else if (numStr.length == 3 && numStr[0] == kamusAngka[i]) {
+    } else if (pecahan.length == 3 && numStr[0] == kamusAngka[i]) {
       return temp + 'ratus ' + numberToWords(numStr.substring(1));
-    } else if (numStr.length == 2 && numStr[0] == kamusAngka[i] && Number(numStr) >= 20) {
+    } else if (pecahan.length == 2 && numStr[0] == kamusAngka[i] && Number(pecahan) >= 20) {
       return temp + 'puluh ' + numberToWords(numStr.substring(1));
-    } else if (numStr.length == 2 && numStr[1] == kamusAngka[i] && Number(numStr) < 20) {
+    } else if (pecahan.length == 2 && numStr[1] == kamusAngka[i] && Number(pecahan) < 20) {
       if (numStr[1] == 1) {
-        return 'sebelas';
+        return 'sebelas ' + numberToWords(numStr.substring(2));
       } else {
-        return kamusAngkaStr[i] + ' belas';
+        return kamusAngkaStr[i] + ' belas ' + numberToWords(numStr.substring(2));
+      } 
+    } else if (pecahan.length == 1 && numStr[0] == kamusAngka[i]) {
+      if (numStr.length >= 6) {
+        return kamusAngkaStr[i] + ' juta ' + numberToWords(numStr.substring(1));
+      } else if (numStr.length > 4) {
+        return  kamusAngkaStr[i] + ' ribu' + numberToWords(numStr.substring(1));
+      } else {
+        return kamusAngkaStr[i] + numberToWords(numStr.substring(1));
       }
-    } else if (numStr.length == 1 && numStr[0] == kamusAngka[i]) {
-      return kamusAngkaStr[i] + numberToWords(numStr.substring(1));
     }
 
+    // console.log(numStr, '======', pecahan);
+   
     if (numStr[0] == 0) {
       return numberToWords(numStr.substring(1));
     }
@@ -91,14 +100,14 @@ function numberToWords(num) {
 
 
 // Driver code
-// console.log(numberToWords(705));
-// console.log(numberToWords(1000000));
-// console.log(numberToWords(2011845));
-// console.log(numberToWords(900));
-// console.log(numberToWords(113));
-// console.log(numberToWords(2543));
-// console.log(numberToWords(4));
+console.log(numberToWords(705));
+console.log(numberToWords(1000000));
+console.log(numberToWords(2011845));
+console.log(numberToWords(900));
+console.log(numberToWords(113));
+console.log(numberToWords(25433746));
+console.log(numberToWords(4));
 console.log(numberToWords(27));
-// console.log(numberToWords(102));
+console.log(numberToWords(102));
 console.log(numberToWords(28079));
-// console.log(numberToWords(82102713));
+console.log(numberToWords(82102713));
