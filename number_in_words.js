@@ -1,5 +1,7 @@
 function stringInator(numString){
   switch (numString) {
+    case '0' :
+      return '';
     case '1':
       return 'satu';
     case '2':
