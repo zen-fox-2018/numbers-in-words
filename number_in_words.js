@@ -1,6 +1,6 @@
 function numberToWords(number) {
   // Your code here
-  var kamus = {1:'satu', 2:'dua', 3:'empat', 4:'empat', 5:'lima', 6:'enam', 7:'tujuh', 8:'delapan', 9:'sembilan'} 
+  var kamus = {1:'satu', 2:'dua', 3:'tiga', 4:'empat', 5:'lima', 6:'enam', 7:'tujuh', 8:'delapan', 9:'sembilan'} 
   var numString = String(number)
 
   if(number === 0){
@@ -15,15 +15,30 @@ function numberToWords(number) {
   }
 
   if(number>=200000000){
-    return kamus[numString[0]]+' ratus juta ' + numberToWords(Number(numString.slice(1)))
+    if(numString[1] == 0){
+      return kamus[numString[0]]+' ratus juta ' + numberToWords(Number(numString.slice(1)))
+    }else{
+      return kamus[numString[0]]+' ratus ' + numberToWords(Number(numString.slice(1)))
+    }
   }
 
   if(number>=100000000){
+    if(numString[1] == 0 && numString[2]==0){
       return 'seratus juta ' + numberToWords(Number(numString.slice(1)))
+    }else{
+      return 'seratus ' + numberToWords(Number(numString.slice(1)))
+    }
     }
 
   if(number>=20000000){
-    return kamus[numString[0]]+' puluh juta ' + numberToWords(Number(numString.slice(1)))
+    if(numString[1] ==0){
+      return kamus[numString[0]]+' puluh juta ' + numberToWords(Number(numString.slice(1)))
+    }
+    return kamus[numString[0]]+' puluh ' + numberToWords(Number(numString.slice(1)))
+  }
+
+  if(number >11000000 && number< 20000000){
+    return kamus[numString[1]] + ' belas juta '  + numberToWords(Number(numString.slice(2)))
   }
 
   if(number >=11000000){
@@ -32,7 +47,7 @@ function numberToWords(number) {
 
   if(number>=10000000){
       return 'sepuluh juta ' + numberToWords(Number(numString.slice(1)))
-    }
+  }
 
 
   if(number>=1000000){
@@ -40,22 +55,34 @@ function numberToWords(number) {
   }
 
   if(number>=200000){
+    if(numString[1] == 0 && numString[2] == 0){
       return kamus[numString[0]]+' ratus ribu ' + numberToWords(Number(numString.slice(1)))
+    }else{
+      return kamus[numString[0]]+' ratus ' + numberToWords(Number(numString.slice(1)))
     }
+  }
 
   if(number>=100000){
-  return 'seratus ribu ' + numberToWords(Number(numString.slice(1)))
+    if(number === 100000){
+      return 'seratus ribu' + numberToWords(Number(numString.slice(1)))
+    }else{
+      return 'seratus ' + numberToWords(Number(numString.slice(1)))
+    }   
   }
 
   if(number>=20000 ){
       return kamus[numString[0]]+' puluh ribu ' + numberToWords(Number(numString.slice(1)))
     }
+
+  if(number >=12000 && number <20000){
+    return kamus[numString[1]] + ' belas ribu '  + numberToWords(Number(numString.slice(2)))
+  }
   
-  if(number >=11000 ){
+  if(number >=11000 && number<12000 ){
       return 'sebelas ribu ' + numberToWords(Number(numString.slice(2)))
   }
   
-  if(number >=10000 ){
+  if(number >=10000){
     return 'sepuluh ribu ' + numberToWords(Number(numString.slice(1)))
   }
 
@@ -102,3 +129,7 @@ console.log(numberToWords(100));
 console.log(numberToWords(705));
 console.log(numberToWords(1000000));
 console.log(numberToWords(2011845));
+
+console.log(numberToWords(49007090));
+console.log(numberToWords(390000));
+console.log(numberToWords(11110050051));
