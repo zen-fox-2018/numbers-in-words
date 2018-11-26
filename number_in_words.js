@@ -94,7 +94,7 @@ function numberToWords(number) {
   else{
     var tampung = '';
     for (i = numString.length-1; i >= 0; i=i-3){
-      if (i < 3){
+      if (i < 2){
         i = 0;
       }
       else{
