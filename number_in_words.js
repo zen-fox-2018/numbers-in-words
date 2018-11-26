@@ -27,7 +27,7 @@ function numberToWords(number) {
   } else if (number < 1000000000000) {
     return `${numberToWords(Math.floor(number/1000000000))} milyar ${numberToWords(number%1000000000)}`;
   } else if (number === 1000000000000) {
-    return "satu trilyun";
+    return "satu triliun";
   } else if(number < 1000000000000000) {
     return `${numberToWords(Math.floor(number/1000000000000))} triliun ${numberToWords(number%1000000000000)}`;
   }
