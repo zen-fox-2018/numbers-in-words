@@ -1,5 +1,8 @@
 function numberToWords(number) {
   var terbilang = ['satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan'];
+  if(number > 999999999999999){
+    return 'masukkan angka 1 - 999999999999999';
+  }
 
   if(number === 0) {
     return '';
@@ -40,6 +43,6 @@ function numberToWords(number) {
   }
 }
 
-console.log(numberToWords(10));
-// console.log(numberToWords(1000000));
-// console.log(numberToWords(2011845));
+console.log(numberToWords(705));
+console.log(numberToWords(1000000));
+console.log(numberToWords(2011845));
