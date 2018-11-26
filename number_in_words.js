@@ -59,12 +59,18 @@ function numToWords(number) {
 
     if(temp == 1){
       if (number.toString().length == 2 || number.toString().slice(2).length == 3 || number.toString().slice(2).length  == 6 || number.toString().slice(2).length == 9 || number.toString().slice(2).length == 12 || number.toString().slice(2).length== 15 ){
-        num += " puluh"
+        if (num != "se"){
+          num += " "
+        }
+        num += "puluh"
         if(number.toString()[1] != 0 ){
           return num + " " + numToWords(number.toString().slice(temp))
         }
       } else if (number.toString().length == 3 || number.toString().slice(3).length == 3 || number.toString().slice(3).length  == 6 || number.toString().slice(3).length == 9 || number.toString().slice(3).length == 12 || number.toString().slice(3).length== 15){
-        num += " ratus"
+        if (num != "se"){
+          num += " "
+        }
+        num += "ratus"
       } 
     }
   
@@ -87,4 +93,6 @@ console.log(numToWords(1000000));
 console.log(numToWords(2011845));
 console.log(numToWords(38079));
 console.log(numToWords(82102713));
+console.log(numToWords(123456));
+
 
