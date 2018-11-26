@@ -1,4 +1,6 @@
 function numberToWords(num) {
+  console.log(num);
+
   var kamusAngkaStr = ['satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan'];
   var kamusAngka = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   var numStr = num.toString();
@@ -17,8 +19,13 @@ function numberToWords(num) {
 
     if (numStr.length > 4 && numStr.length < 7) {
       var pecahan = numStr.slice(0, -3);
+      console.log(pecahan);
     } else if (numStr.length >= 7 && numStr.length < 10) {
       pecahan = numStr.slice(0, -6);
+    } else if (numStr.length >= 10 && numStr.length < 13) {
+      pecahan = numStr.slice(0, -9);
+    } else if (numStr.length >= 13 && numStr.length < 16) {
+      pecahan = numStr.slice(0, -12);
     } else {
       pecahan = numStr;
     }
@@ -34,19 +41,23 @@ function numberToWords(num) {
         return 'sebelas ' + numberToWords(numStr.substring(2));
       } else {
         return kamusAngkaStr[i] + ' belas ' + numberToWords(numStr.substring(2));
-      } 
+      }
     } else if (pecahan.length == 1 && numStr[0] == kamusAngka[i]) {
-      if (numStr.length >= 6) {
+      if (numStr.length >= 13) {
+        return kamusAngkaStr[i] + ' triliun ' + numberToWords(numStr.substring(1));
+      } else if (numStr.length >= 9) {
+        return kamusAngkaStr[i] + ' miliar ' + numberToWords(numStr.substring(1));
+      } else if (numStr.length >= 6) {
         return kamusAngkaStr[i] + ' juta ' + numberToWords(numStr.substring(1));
       } else if (numStr.length > 4) {
-        return  kamusAngkaStr[i] + ' ribu' + numberToWords(numStr.substring(1));
+        return kamusAngkaStr[i] + ' ribu' + numberToWords(numStr.substring(1));
       } else {
         return kamusAngkaStr[i] + numberToWords(numStr.substring(1));
       }
     }
 
     // console.log(numStr, '======', pecahan);
-   
+
     if (numStr[0] == 0) {
       return numberToWords(numStr.substring(1));
     }
@@ -105,7 +116,7 @@ console.log(numberToWords(1000000));
 console.log(numberToWords(2011845));
 console.log(numberToWords(900));
 console.log(numberToWords(113));
-console.log(numberToWords(25433746));
+console.log(numberToWords(25433746789860));
 console.log(numberToWords(4));
 console.log(numberToWords(27));
 console.log(numberToWords(102));
