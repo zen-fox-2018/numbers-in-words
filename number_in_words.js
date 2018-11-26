@@ -98,7 +98,7 @@ function numberToWords(num) {
 // console.log(numberToWords(113));
 // console.log(numberToWords(2543));
 // console.log(numberToWords(4));
-// console.log(numberToWords(27));
+console.log(numberToWords(27));
 // console.log(numberToWords(102));
 console.log(numberToWords(28079));
 // console.log(numberToWords(82102713));
